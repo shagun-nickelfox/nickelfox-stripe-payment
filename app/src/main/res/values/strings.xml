@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">PaymentApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_card">Add Card</string>
+    <string name="none">none</string>
+    <string name="bank_name">Card Type</string>
+    <string name="hint_card_number">XXXX XXXX XXXX XXXX</string>
+    <string name="cardholder">CardHolder</string>
+    <string name="save">Save</string>
+    <string name="card_number_error">Card number can\'t be empty</string>
+    <string name="card_holder_error">CardHolder name can\'t be empty</string>
+    <string name="card_cvv_error">Card cvv can\'t be empty</string>
+    <string name="card_expire_month_error">Expiry month can\'t be empty</string>
+    <string name="card_expire_year_error">Expiry year can\'t be empty</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="make_payment">Make Payment</string>
+</resources>

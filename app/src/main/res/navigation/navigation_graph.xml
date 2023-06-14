@@ -1,0 +1,21 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/addCardFragment"
+        android:name="com.example.paymentapp.ui.AddCardFragment"
+        tools:layout="@layout/fragment_add_card" />
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.paymentapp.ui.MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_add_card_fragment"
+            app:destination="@id/addCardFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

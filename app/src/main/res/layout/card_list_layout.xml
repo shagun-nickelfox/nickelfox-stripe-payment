@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivCard"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/none"
+        android:src="@drawable/bg_card_details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvBankName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/bank_name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/ivCard"
+        app:layout_constraintStart_toStartOf="@+id/ivCard"
+        app:layout_constraintTop_toTopOf="@id/ivCard" />
+
+    <TextView
+        android:id="@+id/tvCardNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/hint_card_number"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/ivCard"
+        app:layout_constraintStart_toStartOf="@+id/ivCard"
+        app:layout_constraintTop_toBottomOf="@id/tvBankName" />
+
+    <TextView
+        android:id="@+id/tvCardHolderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/cardholder"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/ivCard"
+        app:layout_constraintTop_toBottomOf="@id/tvCardNumber" />
+
+    <TextView
+        android:id="@+id/tvCardExpiryMonth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="01"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvCardHolderName"
+        app:layout_constraintStart_toEndOf="@+id/tvCardHolderName"
+        app:layout_constraintTop_toTopOf="@id/tvCardHolderName" />
+
+    <TextView
+        android:id="@+id/tvCardMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MM"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@id/tvCardExpiryMonth"
+        app:layout_constraintStart_toStartOf="@+id/tvCardExpiryMonth"
+        app:layout_constraintTop_toBottomOf="@id/tvCardExpiryMonth" />
+
+    <TextView
+        android:id="@+id/tvCardExpirySlash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="/"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvCardHolderName"
+        app:layout_constraintStart_toEndOf="@+id/tvCardExpiryMonth"
+        app:layout_constraintTop_toTopOf="@id/tvCardHolderName" />
+
+    <TextView
+        android:id="@+id/tvCardExpiryYear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="26"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvCardHolderName"
+        app:layout_constraintStart_toEndOf="@+id/tvCardExpirySlash"
+        app:layout_constraintTop_toTopOf="@id/tvCardHolderName" />
+
+    <TextView
+        android:id="@+id/tvCardYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YY"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@id/tvCardExpiryYear"
+        app:layout_constraintStart_toStartOf="@+id/tvCardExpiryYear"
+        app:layout_constraintTop_toBottomOf="@id/tvCardExpiryYear" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
