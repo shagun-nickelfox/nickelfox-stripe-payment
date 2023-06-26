@@ -8,4 +8,6 @@ object Constants {
     const val AUTHORIZATION = "Authorization"
     const val BEARER = "Bearer "
     const val NETWORK_TIMEOUT = 30L
+    const val STRIPE_VERSION = "Stripe-Version"
+    const val VERSION_NO = "2022-11-15"
 }
