@@ -1,6 +1,6 @@
 package com.example.paymentapp.data.models
 
-data class CustomerResponse(
+data class CustomerInfo(
     val address: Any,
     val balance: Int,
     val created: Int,

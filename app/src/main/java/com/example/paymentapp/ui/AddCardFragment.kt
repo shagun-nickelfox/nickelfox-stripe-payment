@@ -38,7 +38,7 @@ class AddCardFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.apply {
+     /*   binding.apply {
             etCardNumber.doAfterTextChanged {
                 setButtonEnableDisable()
             }
@@ -97,7 +97,7 @@ class AddCardFragment : Fragment() {
 
                 addCardToStripe(allDetails)
             }
-        }
+        }*/
     }
 
     private fun addCardToStripe(allDetails: HashMap<String, Any>) {
@@ -113,14 +113,14 @@ class AddCardFragment : Fragment() {
 
     private fun setButtonEnableDisable() {
         binding.apply {
-            btnSave.isEnabled = when {
+          /*  btnSave.isEnabled = when {
                 etCardNumber.text.isNullOrEmpty() -> false
                 etCardHolderName.text.isNullOrEmpty() -> false
                 etCardExpiryMonth.text.isNullOrEmpty() -> false
                 etCardExpiryYear.text.isNullOrEmpty() -> false
                 etCardCVV.text.isNullOrEmpty() -> false
                 else -> true
-            }
+            }*/
         }
     }
 }
