@@ -10,4 +10,8 @@ object Constants {
     const val NETWORK_TIMEOUT = 30L
     const val STRIPE_VERSION = "Stripe-Version"
     const val VERSION_NO = "2022-11-15"
+    const val EXPIRY_MONTH = "exp_month"
+    const val EXPIRY_YEAR = "exp_year"
+    const val NAME = "name"
+    const val CVV ="cvc"
 }

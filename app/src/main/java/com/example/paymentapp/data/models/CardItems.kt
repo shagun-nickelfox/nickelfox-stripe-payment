@@ -24,7 +24,7 @@ data class CardItems(
     val funding: String,
     val id: String,
     val last4: String,
-    val name: String?,
+    val name: String,
     val `object`: String,
     val tokenization_method: String?,
     val wallet: String?
