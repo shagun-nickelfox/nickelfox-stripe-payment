@@ -1,7 +1,5 @@
 package com.example.paymentapp.data.models
 
-import kotlin.Metadata
-
 data class PaymentIntent(
     val amount: Int,
     val amount_capturable: Int,
