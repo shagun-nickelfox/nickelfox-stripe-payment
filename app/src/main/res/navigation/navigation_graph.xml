@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/cardsFragment"
-        android:name="com.example.paymentapp.CardsFragment"
+        android:name="com.example.paymentapp.ui.CardsFragment"
         android:label="fragment_cards"
         tools:layout="@layout/fragment_cards" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/editCardFragment"
-        android:name="com.example.paymentapp.EditCardFragment"
+        android:name="com.example.paymentapp.ui.EditCardFragment"
         android:label="fragment_edit_card"
         tools:layout="@layout/fragment_edit_card" >
         <argument
