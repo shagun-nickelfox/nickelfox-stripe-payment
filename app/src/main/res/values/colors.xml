@@ -9,5 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#E11F1F</color>
     <color name="blue">#A9DAF1</color>
-    <color name="darkBlue">#ff207d94</color>
+    <color name="darkTeal">#ff207d94</color>
+    <color name="colorSecondaryText">#82889C</color>
+    <color name="colorError">#FF0040</color>
+    <color name="colorPrimaryVariant">#9C00BA</color>
+    <color name="colorOutlineBox">#EDECF5</color>
+    <color name="colorAccent">#050D33</color>
+    <color name = "colorLightPrimary">#7F5A83</color>
+    <color name ="darkBlue">#0D324D</color>
 </resources>
