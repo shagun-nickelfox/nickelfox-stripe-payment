@@ -1,26 +1,29 @@
 package com.example.paymentapp.ui
 
 import android.os.Bundle
-import android.os.StrictMode
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
-import com.example.paymentapp.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.paymentapp.databinding.FragmentAddCardBinding
+import com.example.paymentapp.di.view_models.PaymentsViewModel
+import com.example.paymentapp.di.view_models.PaymentsViewState
 import com.example.paymentapp.utils.Constants
-import com.example.paymentapp.utils.readCustomerId
-import com.stripe.Stripe
-import com.stripe.exception.StripeException
-import com.stripe.model.PaymentMethod
+import com.stripe.android.ApiResultCallback
+import com.stripe.android.PaymentConfiguration
+import com.stripe.android.model.CardParams
+import com.stripe.android.model.Token
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddCardFragment : Fragment() {
     private lateinit var binding: FragmentAddCardBinding
-    private var cardDetails = hashMapOf<String, Any>()
-    private var billingDetails = hashMapOf<String, Any>()
-    private var allDetails = hashMapOf<String, Any>()
+    private lateinit var viewModel: PaymentsViewModel
+    private lateinit var tokenId :String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,95 +35,68 @@ class AddCardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Stripe.apiKey = Constants.secret_key
-        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder().permitAll().build())
+        viewModel = ViewModelProvider(this)[PaymentsViewModel::class.java]
+        PaymentConfiguration.init(
+            requireContext(), Constants.publish_key
+        )
         initListeners()
+        initObservers()
     }
 
     private fun initListeners() {
-     /*   binding.apply {
-            etCardNumber.doAfterTextChanged {
-                setButtonEnableDisable()
-            }
-
-            etCardNumber.setOnFocusChangeListener { _, hasFocus ->
-                if (!hasFocus && etCardNumber.text.isNullOrEmpty())
-                    etCardNumber.error = getString(R.string.card_number_error)
-            }
-
-            etCardHolderName.doAfterTextChanged {
-                setButtonEnableDisable()
-            }
-
-            etCardHolderName.setOnFocusChangeListener { _, hasFocus ->
-                if (!hasFocus && etCardHolderName.text.isNullOrEmpty())
-                    etCardHolderName.error = getString(R.string.card_holder_error)
-            }
-
-
-            etCardExpiryMonth.doAfterTextChanged {
-                setButtonEnableDisable()
-            }
-
-            etCardExpiryMonth.setOnFocusChangeListener { _, hasFocus ->
-                if (!hasFocus && etCardExpiryMonth.text.isNullOrEmpty())
-                    etCardExpiryMonth.error = getString(R.string.card_expire_month_error)
-            }
-
-            etCardExpiryYear.doAfterTextChanged {
-                setButtonEnableDisable()
-            }
-
-            etCardExpiryYear.setOnFocusChangeListener { _, hasFocus ->
-                if (!hasFocus && etCardExpiryYear.text.isNullOrEmpty())
-                    etCardExpiryYear.error = getString(R.string.card_expire_year_error)
-            }
-
-            etCardCVV.doAfterTextChanged {
-                setButtonEnableDisable()
-            }
-
-            etCardCVV.setOnFocusChangeListener { _, hasFocus ->
-                if (!hasFocus && etCardCVV.text.isNullOrEmpty())
-                    etCardCVV.error = getString(R.string.card_cvv_error)
-            }
-
-            btnSave.setOnClickListener {
-                cardDetails["number"] = etCardNumber.text.toString()
-                cardDetails["exp_month"] = etCardExpiryMonth.text.toString()
-                cardDetails["exp_year"] = etCardExpiryYear.text.toString()
-                cardDetails["cvc"] = etCardCVV.text.toString()
-                billingDetails["name"] = etCardHolderName.text.toString()
-                allDetails["type"] = "card"
-                allDetails["card"] = cardDetails
-                allDetails["billing_details"] = billingDetails
-
-                addCardToStripe(allDetails)
-            }
-        }*/
-    }
-
-    private fun addCardToStripe(allDetails: HashMap<String, Any>) {
-        try {
-            val paymentMethod = PaymentMethod.create(allDetails)
-            PaymentMethod.retrieve(paymentMethod.id)
-                .attach(mapOf(Pair("customer", requireActivity().readCustomerId())))
-            Toast.makeText(requireContext(), "Card added Successfully", Toast.LENGTH_SHORT).show()
-        } catch (e: StripeException) {
-            Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun setButtonEnableDisable() {
         binding.apply {
-          /*  btnSave.isEnabled = when {
-                etCardNumber.text.isNullOrEmpty() -> false
-                etCardHolderName.text.isNullOrEmpty() -> false
-                etCardExpiryMonth.text.isNullOrEmpty() -> false
-                etCardExpiryYear.text.isNullOrEmpty() -> false
-                etCardCVV.text.isNullOrEmpty() -> false
-                else -> true
-            }*/
+           cardHolderNameEt.doAfterTextChanged {
+               btnAdd.isEnabled = !cardHolderNameEt.text.isNullOrEmpty()
+           }
+            btnAdd.setOnClickListener {
+                val cardWidgetParams = cardInputWidget.cardParams
+                cardWidgetParams?.name = cardHolderNameEt.text.toString()
+                if (cardWidgetParams != null) {
+                    createToken(cardWidgetParams)
+                }
+            }
         }
+    }
+    private fun initObservers() {
+        binding.apply {
+            viewModel.viewState.observe(viewLifecycleOwner){ state ->
+                when(state){
+                    is PaymentsViewState.Idle -> viewFlipper.displayedChild = 0
+                    is PaymentsViewState.Loading -> viewFlipper.displayedChild = 1
+                }
+            }
+            viewModel.customerIdSuccessEvent.observe(viewLifecycleOwner){
+                addCardToCustomer()
+            }
+            viewModel.cardActionSuccessEvent.observe(viewLifecycleOwner){
+                Toast.makeText(requireContext(),"Card Added Successfully",Toast.LENGTH_SHORT).show()
+                findNavController().popBackStack()
+            }
+            viewModel.errorEvent.observe(viewLifecycleOwner){
+                Toast.makeText(requireContext(),it,Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun createToken(cardWidgetParams: CardParams) {
+        val stripe = com.stripe.android.Stripe(requireContext(), Constants.publish_key)
+        stripe.createCardToken(cardWidgetParams, callback = object : ApiResultCallback<Token> {
+            override fun onError(e: Exception) {
+                Toast.makeText(requireContext(), "Error creating token", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onSuccess(result: Token) {
+                tokenId = result.id
+                if (viewModel.customerID != null)
+                    addCardToCustomer()
+                else
+                    viewModel.getCustomerId(false)
+            }
+
+        })
+    }
+
+    private fun addCardToCustomer() {
+        viewModel.addCard(tokenId)
     }
 }
