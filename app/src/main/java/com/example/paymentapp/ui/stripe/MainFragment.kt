@@ -1,4 +1,4 @@
-package com.example.paymentapp.ui
+package com.example.paymentapp.ui.stripe
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.paymentapp.data.models.PaymentIntent
 import com.example.paymentapp.databinding.FragmentMainBinding
-import com.example.paymentapp.di.view_models.PaymentsViewModel
+import com.example.paymentapp.di.view_models.stripe.PaymentsViewModel
 import com.example.paymentapp.utils.Constants
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet

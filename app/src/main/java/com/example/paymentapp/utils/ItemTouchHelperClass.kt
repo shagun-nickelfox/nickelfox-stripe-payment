@@ -2,7 +2,7 @@ package com.example.paymentapp.utils
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.paymentapp.ui.CardsAdapter
+import com.example.paymentapp.ui.stripe.CardsAdapter
 
 
 class ItemTouchHelperClass(private val adapter: CardsAdapter): ItemTouchHelper.SimpleCallback(0,

@@ -1,4 +1,4 @@
-package com.example.paymentapp.ui
+package com.example.paymentapp.ui.stripe
 
 import android.os.Bundle
 import android.util.Log
@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.paymentapp.data.models.CardItems
 import com.example.paymentapp.databinding.FragmentCardsBinding
-import com.example.paymentapp.di.view_models.PaymentsViewModel
-import com.example.paymentapp.di.view_models.PaymentsViewState
+import com.example.paymentapp.di.view_models.stripe.PaymentsViewModel
+import com.example.paymentapp.di.view_models.stripe.PaymentsViewState
 import com.example.paymentapp.utils.ItemTouchHelperClass
 import dagger.hilt.android.AndroidEntryPoint
 

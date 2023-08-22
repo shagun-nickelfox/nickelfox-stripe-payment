@@ -1,4 +1,4 @@
-package com.example.paymentapp.di.view_models
+package com.example.paymentapp.di.view_models.stripe
 
 import android.util.Log
 import androidx.lifecycle.LiveData

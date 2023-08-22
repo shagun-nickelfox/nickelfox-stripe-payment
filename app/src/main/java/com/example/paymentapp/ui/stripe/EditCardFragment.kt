@@ -1,4 +1,4 @@
-package com.example.paymentapp.ui
+package com.example.paymentapp.ui.stripe
 
 import android.os.Bundle
 import android.text.Editable
@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.paymentapp.R
 import com.example.paymentapp.databinding.FragmentEditCardBinding
-import com.example.paymentapp.di.view_models.PaymentsViewModel
-import com.example.paymentapp.di.view_models.PaymentsViewState
+import com.example.paymentapp.di.view_models.stripe.PaymentsViewModel
+import com.example.paymentapp.di.view_models.stripe.PaymentsViewState
 import com.example.paymentapp.utils.Constants.EXPIRY_MONTH
 import com.example.paymentapp.utils.Constants.EXPIRY_YEAR
 import com.example.paymentapp.utils.Constants.NAME

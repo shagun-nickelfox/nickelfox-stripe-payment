@@ -17,7 +17,7 @@
         android:theme="@style/Theme.PaymentApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.stripe.MainActivity"
             android:exported="true"
             android:theme="@style/AppTheme.FullScreen">
             <intent-filter>

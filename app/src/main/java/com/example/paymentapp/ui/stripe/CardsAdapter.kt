@@ -1,4 +1,4 @@
-package com.example.paymentapp.ui
+package com.example.paymentapp.ui.stripe
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,9 @@ import com.example.paymentapp.data.models.CardItems
 import com.example.paymentapp.databinding.CardItemsLayoutBinding
 
 
-class CardsAdapter(val listener:CardsAction): ListAdapter<CardItems, CardsAdapter.CardsViewHolder>(CardsDifUtil()) {
+class CardsAdapter(val listener: CardsAction): ListAdapter<CardItems, CardsAdapter.CardsViewHolder>(
+    CardsDifUtil()
+) {
 
     inner class CardsViewHolder(private val binding: CardItemsLayoutBinding):
         RecyclerView.ViewHolder(binding.root){

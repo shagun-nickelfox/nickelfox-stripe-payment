@@ -1,4 +1,4 @@
-package com.example.paymentapp.ui
+package com.example.paymentapp.ui.stripe
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

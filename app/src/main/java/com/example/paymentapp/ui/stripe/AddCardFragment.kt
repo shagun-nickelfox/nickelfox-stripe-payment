@@ -1,4 +1,4 @@
-package com.example.paymentapp.ui
+package com.example.paymentapp.ui.stripe
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,8 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.paymentapp.databinding.FragmentAddCardBinding
-import com.example.paymentapp.di.view_models.PaymentsViewModel
-import com.example.paymentapp.di.view_models.PaymentsViewState
+import com.example.paymentapp.di.view_models.stripe.PaymentsViewModel
+import com.example.paymentapp.di.view_models.stripe.PaymentsViewState
 import com.example.paymentapp.utils.Constants
 import com.stripe.android.ApiResultCallback
 import com.stripe.android.PaymentConfiguration
