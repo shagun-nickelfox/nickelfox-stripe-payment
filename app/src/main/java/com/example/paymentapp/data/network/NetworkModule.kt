@@ -4,6 +4,8 @@ import com.example.paymentapp.BuildConfig
 import com.example.paymentapp.utils.Constants.AUTHORIZATION
 import com.example.paymentapp.utils.Constants.BEARER
 import com.example.paymentapp.utils.Constants.NETWORK_TIMEOUT
+import com.example.paymentapp.utils.Constants.STRIPE_VERSION
+import com.example.paymentapp.utils.Constants.VERSION_NO
 import com.example.paymentapp.utils.Constants.secret_key
 import dagger.Module
 import dagger.Provides
@@ -25,9 +27,9 @@ object NetworkModule {
     fun provideTokenInterceptor() = Interceptor { chain ->
         val newRequest = chain.request().newBuilder()
             .addHeader(AUTHORIZATION, BEARER + secret_key)
+            .addHeader(STRIPE_VERSION, VERSION_NO)
             .build()
         chain.proceed(newRequest)
-
     }
 
     @Provides
@@ -52,7 +54,7 @@ object NetworkModule {
     @Singleton
     fun provideApi(client: OkHttpClient): Api {
         val builder =
-            Retrofit.Builder().baseUrl("https://api.stripe.com/v1/")
+            Retrofit.Builder().baseUrl("https://api.stripe.com")
                 .addConverterFactory(GsonConverterFactory.create())
         builder.client(client)
         return builder.build().create(Api::class.java)
