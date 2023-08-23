@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/addCardFragment"
-        android:name="com.example.paymentapp.ui.AddCardFragment"
+        android:name="com.example.paymentapp.ui.stripe.AddCardFragment"
         tools:layout="@layout/fragment_add_card" >
         <action
             android:id="@+id/moveToCardsFragment"
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.paymentapp.ui.MainFragment"
+        android:name="com.example.paymentapp.ui.stripe.MainFragment"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_add_card_fragment"
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/cardsFragment"
-        android:name="com.example.paymentapp.ui.CardsFragment"
+        android:name="com.example.paymentapp.ui.stripe.CardsFragment"
         android:label="fragment_cards"
         tools:layout="@layout/fragment_cards" >
         <action
@@ -40,11 +40,11 @@
     </fragment>
     <fragment
         android:id="@+id/editCardFragment"
-        android:name="com.example.paymentapp.ui.EditCardFragment"
+        android:name="com.example.paymentapp.ui.stripe.EditCardFragment"
         android:label="fragment_edit_card"
         tools:layout="@layout/fragment_edit_card" >
         <argument
             android:name="cardDetails"
-            app:argType="com.example.paymentapp.data.models.CardItems" />
+            app:argType="com.example.paymentapp.data.stripe.models.CardItems" />
     </fragment>
 </navigation>

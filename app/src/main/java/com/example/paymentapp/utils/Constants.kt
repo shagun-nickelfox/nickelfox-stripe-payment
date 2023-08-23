@@ -14,4 +14,6 @@ object Constants {
     const val EXPIRY_YEAR = "exp_year"
     const val NAME = "name"
     const val CVV ="cvc"
+    const val KEY_ID = "rzp_test_L4p3bDNOWHCZkr"
+    const val KEY_SECRET = "9u6ivscBLEixuIdSIlWZqTWB"
 }
