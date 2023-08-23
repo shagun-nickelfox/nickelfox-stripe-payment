@@ -45,6 +45,6 @@
         tools:layout="@layout/fragment_edit_card" >
         <argument
             android:name="cardDetails"
-            app:argType="com.example.paymentapp.data.models.CardItems" />
+            app:argType="com.example.paymentapp.data.stripe.models.CardItems" />
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.paymentapp.data.models
+package com.example.paymentapp.data.stripe.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

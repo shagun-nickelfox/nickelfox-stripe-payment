@@ -1,4 +1,4 @@
-package com.example.paymentapp.data.network
+package com.example.paymentapp.data.stripe.network
 
 import com.example.paymentapp.BuildConfig
 import com.example.paymentapp.utils.Constants.AUTHORIZATION
@@ -17,6 +17,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -24,6 +25,7 @@ import javax.inject.Singleton
 object NetworkModule {
     @Provides
     @Singleton
+    @Named("StripeInterceptor")
     fun provideTokenInterceptor() = Interceptor { chain ->
         val newRequest = chain.request().newBuilder()
             .addHeader(AUTHORIZATION, BEARER + secret_key)
@@ -34,8 +36,9 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    @Named("StripeClient")
     fun provideOkHttpClient(
-        tokenInterceptor: Interceptor,
+        @Named("StripeInterceptor") tokenInterceptor: Interceptor,
     ): OkHttpClient {
         val client = OkHttpClient.Builder().readTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
@@ -52,7 +55,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApi(client: OkHttpClient): Api {
+    @Named("StripeApi")
+    fun provideApi(@Named("StripeClient") client: OkHttpClient): Api {
         val builder =
             Retrofit.Builder().baseUrl("https://api.stripe.com")
                 .addConverterFactory(GsonConverterFactory.create())

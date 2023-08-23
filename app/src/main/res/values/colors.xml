@@ -17,4 +17,9 @@
     <color name="colorAccent">#050D33</color>
     <color name = "colorLightPrimary">#7F5A83</color>
     <color name ="darkBlue">#0D324D</color>
+    <color name = "lightTealColor">#0D98BA</color>
+    <color name="darkTealColor">#008080</color>
+    <color name="tealColor">#006A6E</color>
+    <color name="aquaBlue">#094952</color>
+    <color name="hintColor">#82889C</color>
 </resources>

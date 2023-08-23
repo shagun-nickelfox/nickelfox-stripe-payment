@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.paymentapp.data.PaymentPreferences
-import com.example.paymentapp.data.models.CardItems
-import com.example.paymentapp.data.models.PaymentIntent
-import com.example.paymentapp.data.repositories.PaymentRepository
+import com.example.paymentapp.data.stripe.models.CardItems
+import com.example.paymentapp.data.stripe.models.PaymentIntent
+import com.example.paymentapp.data.stripe.repositories.PaymentRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

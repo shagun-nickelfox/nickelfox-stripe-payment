@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.paymentapp.data.models.PaymentIntent
+import com.example.paymentapp.data.stripe.models.PaymentIntent
 import com.example.paymentapp.databinding.FragmentMainBinding
 import com.example.paymentapp.di.view_models.stripe.PaymentsViewModel
 import com.example.paymentapp.utils.Constants
@@ -54,7 +54,7 @@ class MainFragment : Fragment() {
                     viewModel.getCustomerId()
             }
             btnAddCard.setOnClickListener {
-                findNavController().navigate(MainFragmentDirections.actionAddCardFragment())
+               findNavController().navigate(MainFragmentDirections.actionAddCardFragment())
             }
             btnShowCard.setOnClickListener {
                findNavController().navigate(MainFragmentDirections.actionToCardsFragment())

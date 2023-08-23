@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
-import com.example.paymentapp.data.models.CardItems
+import com.example.paymentapp.data.stripe.models.CardItems
 import com.example.paymentapp.databinding.FragmentCardsBinding
 import com.example.paymentapp.di.view_models.stripe.PaymentsViewModel
 import com.example.paymentapp.di.view_models.stripe.PaymentsViewState

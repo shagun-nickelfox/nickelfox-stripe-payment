@@ -1,19 +1,20 @@
-package com.example.paymentapp.data.repositories
+package com.example.paymentapp.data.stripe.repositories
 
 import android.util.Log
-import com.example.paymentapp.data.models.CardItems
-import com.example.paymentapp.data.models.CustomerInfo
-import com.example.paymentapp.data.models.DeleteCardResponse
-import com.example.paymentapp.data.models.EphemeralKeyResponse
-import com.example.paymentapp.data.models.PaymentIntent
-import com.example.paymentapp.data.network.Api
+import com.example.paymentapp.data.stripe.models.CardItems
+import com.example.paymentapp.data.stripe.models.CustomerInfo
+import com.example.paymentapp.data.stripe.models.DeleteCardResponse
+import com.example.paymentapp.data.stripe.models.EphemeralKeyResponse
+import com.example.paymentapp.data.stripe.models.PaymentIntent
+import com.example.paymentapp.data.stripe.network.Api
 import com.example.paymentapp.utils.ApiException
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import javax.inject.Inject
+import javax.inject.Named
 
 class PaymentRepository @Inject constructor(
-    private val api: Api
+    @Named("StripeApi") private val api: Api
 ) {
     suspend fun getCustomerId(): CustomerInfo? {
         val response = api.getCustomerId()

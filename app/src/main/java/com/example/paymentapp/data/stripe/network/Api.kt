@@ -1,11 +1,11 @@
-package com.example.paymentapp.data.network
+package com.example.paymentapp.data.stripe.network
 
-import com.example.paymentapp.data.models.CardItems
-import com.example.paymentapp.data.models.CustomerInfo
-import com.example.paymentapp.data.models.DeleteCardResponse
-import com.example.paymentapp.data.models.EphemeralKeyResponse
-import com.example.paymentapp.data.models.PaymentCards
-import com.example.paymentapp.data.models.PaymentIntent
+import com.example.paymentapp.data.stripe.models.CardItems
+import com.example.paymentapp.data.stripe.models.CustomerInfo
+import com.example.paymentapp.data.stripe.models.DeleteCardResponse
+import com.example.paymentapp.data.stripe.models.EphemeralKeyResponse
+import com.example.paymentapp.data.stripe.models.PaymentCards
+import com.example.paymentapp.data.stripe.models.PaymentIntent
 import retrofit2.Response
 import retrofit2.http.*
 
